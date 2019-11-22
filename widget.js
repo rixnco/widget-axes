@@ -169,7 +169,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         fiddleurl: "(auto fill by runme.js)", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
         githuburl: "(auto fill by runme.js)", // The backing github repo
         testurl: "(auto fill by runme.js)",   // The standalone working widget so can view it working by itself
-        name: "Widget / XYZ Axes v2 - RIX",
+        name: "Widget / XYZ Axes v2",
         desc: "The Axes widget shows the XYZA values of the axes of your CNC controller. It also enables you to jog, home, change units, and change Work Coordinate Systems.",
         publish: {},
         subscribe: {},
@@ -1351,7 +1351,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
         },
         zeroOutAxisG10: function (evt) {
-            console.warn("zeroOutAxis10. evt.data:", evt.data, "evt:", evt, "lastVal:", this.lastVal);
+            console.warn("zeroOutAxis10. evt.data:", evt.data, "evt:", evt, "lastVal:", this.lastVal.mx);
             var cmd = '';
             if (evt.data == "xyz") {
                 cmd += 'G10 L2 P' + (this.lastCoords.coordNum - 53) + ' X' + (this.lastVal.mx) + ' Y' + (this.lastVal.my) + ' Z' + (this.lastVal.mz);
@@ -1898,7 +1898,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         },
         jog: function (direction, isFast, is100xFast, is1000xFast, is10000xFast) {
             var key = direction;
-            var cmd = "$J=G0 ";
+            var cmd = "G91 G0 ";
             var feedrate = 200;
             var mult = 1;
             var xyz = "";
@@ -1939,7 +1939,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
             if (xyz.length > 0) {
                 //cmd += xyz + val + " F" + feedrate + "\nG90\n";
-                cmd += xyz + val + "\n";
+                cmd += xyz + val + "\nG90\n";
                 // do last minute check to see if planner buffer is too full, if so ignore this cmd
                 if (!(this.isPausedByPlanner)) {
                     //chilipeppr.publish("/com-chilipeppr-widget-serialport/send", cmd);
