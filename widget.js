@@ -1351,7 +1351,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
         },
         zeroOutAxisG10: function (evt) {
-            console.warn("zeroOutAxis10. evt.data:", evt.data, "evt:", evt, "lastVal:", this.lastVal.mx);
+            console.warn("zeroOutAxis10. evt.data:", evt.data, "evt:", evt, "lastVal:", this.lastVal);
             var cmd = '';
             if (evt.data == "xyz") {
                 cmd += 'G10 L2 P' + (this.lastCoords.coordNum - 53) + ' X' + (this.lastVal.mx) + ' Y' + (this.lastVal.my) + ' Z' + (this.lastVal.mz);
@@ -1898,7 +1898,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
         },
         jog: function (direction, isFast, is100xFast, is1000xFast, is10000xFast) {
             var key = direction;
-            var cmd = "G91 G0 ";
+            var cmd = "$J=G0 ";
             var feedrate = 200;
             var mult = 1;
             var xyz = "";
@@ -1939,7 +1939,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
 
             if (xyz.length > 0) {
                 //cmd += xyz + val + " F" + feedrate + "\nG90\n";
-                cmd += xyz + val + "\nG90\n";
+                cmd += xyz + val + "\n";
                 // do last minute check to see if planner buffer is too full, if so ignore this cmd
                 if (!(this.isPausedByPlanner)) {
                     //chilipeppr.publish("/com-chilipeppr-widget-serialport/send", cmd);
