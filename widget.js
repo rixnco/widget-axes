@@ -1336,7 +1336,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             if (this.sendCtr > 999999) this.sendCtr = 0;
         },
         gotoG28Position: function(evt) {
-            var cmd="G28 G91 Z0\n"
+            var cmd="G91 G28 Z0\n"
             if(evt.data == "xyz") {
                 cmd+= "G28 X0 Y0\n"
             }

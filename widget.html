@@ -464,10 +464,10 @@
                     <tr valign="top">
                         <td class="col xcol-xs-2" style="border:0px red solid;" rowspan="2">
                             <div class="btn-group-vertical">
-                                <button class="btn btn-xs btn-default safez" data-toggle="popover" data-placement="top" data-title="Go to safe z position" data-content="G28 G91 Z0" data-html="true"
-                                data-delay="800" data-trigger="hover" data-container="body">Go to safe Z</button>
-                                <button class="btn btn-xs btn-default safexyz" data-toggle="popover" data-placement="top" data-title="Go to safe/park x/y/z position" data-content="G28 G91 Z0<br>G28 X0 Y0<br/>This moves Z axes to safe position; Then x/y to park position."
-                                data-html="true" data-delay="800" data-trigger="hover" data-container="body">Got to safe XYZ</button>
+                                <button class="btn btn-xs btn-default safez" data-toggle="popover" data-placement="top" data-title="Go to G28 z position" data-content="G28 Z0" data-html="true"
+                                data-delay="800" data-trigger="hover" data-container="body">Go to G28 Z</button>
+                                <button class="btn btn-xs btn-default safexyz" data-toggle="popover" data-placement="top" data-title="Go to G28 z/x/y position" data-content="G28 Z0<br>G28 X0 Y0<br/>This moves Z axes to G28 position; Then x/y."
+                                data-html="true" data-delay="800" data-trigger="hover" data-container="body">Got to G28 ZXY</button>
         
                                 <button class="btn btn-xs btn-default joggotozerow" data-toggle="popover" data-placement="top" data-title="Rapid to Zero Position, all axes, current work coordinate" data-content="G0 X0 Y0 Z0 A0<br/>This moves all axes to zero in current work coordinate system; individual moves available via axis drop down menus above."
                                 data-html="true" data-delay="800" data-trigger="hover" data-container="body">Go To <span class="com-chilipeppr-widget-xyz-coords">Gxx</span> Zero</button>
@@ -483,17 +483,6 @@
                         </td>
                         <td class="col xcol-xs-2" style="border:0px green solid;padding-left:4px;">
                             <div class="btn-group-vertical" style="margin-right:-0px;">
-
-                                <!-- <div class="btn-group">
-                                <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"  style="padding: 3px 2px;" > <span class="caret"></span>
-                            
-                                </button>
-                                <ul class="dropdown-menu xpull-right" role="menu">
-                                    <li role="presentation" class="dropdown-header">Jogging Algorithm</li>
-                                    <li><a href="javascript:" class="alert-info jogviaincr">Jog via Sending Increments then Feedhold</a></li>
-                                    <li><a href="javascript:" class="jogvialongmove">Jog via Sending Single Long Move then Feedhold</a></li>
-                                </ul>
-                            </div> -->
                                 <button id="com-chilipeppr-widget-xyz-jog" class="btn btn-default dbltall" style="padding: 8px 4px;" data-toggle="popover" data-placement="auto" data-title="Jog Shortcut Keys" data-content="X+ : Left Arrow<br>X- : Right Arrow<br>Y+ : Up Arrow<br>Y- : Down Arrow<br>Z+ : Page Up<br>Z- : Page Down<br>Shift : 10x Move By<br>Ctrl (or Alt) : 100x Move By<br>Shift + Ctrl (or Alt) : 1,000x Move By"
                                 data-html="true" data-delay="200" data-trigger="hover" data-container="body"><span class="rotate90">Jog</span>
                                 </button>
