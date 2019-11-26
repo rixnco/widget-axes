@@ -220,6 +220,10 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             // layer system we're in
             chilipeppr.subscribe('/com-chilipeppr-interface-cnccontroller/coords', this.onCoordsUpdate.bind(this));
 
+            chilipeppr.subscribe('/com-chilipeppr-interface-cnccontroller/distance', this.onDistanceUpdate.bind(this));
+
+            
+
             // setup onconnect pubsub event
             /*
             chilipeppr.subscribe("/com-chilipeppr-widget-serialport/ws/onconnect", this, function (msg) {
@@ -1103,6 +1107,12 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 this.lastCoords = coords;
             }
         },
+        onDistanceUpdate: function (distance) {
+            console.log("onDistanceUpdate. distance:", distance);
+            if (distance != this.distance) {
+                this.distance = distance;
+            }
+        },
 
         axisx: null,
         axisy: null,
@@ -1329,6 +1339,11 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             var cmd="G28 G91 Z0\n"
             if(evt.data == "xyz") {
                 cmd+= "G28 X0 Y0\n"
+            }
+            if(this.distance == 'Absolute') {
+                cmd += "G90\n"
+            } else {
+                cmd += "G91\n"
             }
             console.log(cmd);
             this.publishSend(cmd);            
