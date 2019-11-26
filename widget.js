@@ -1517,7 +1517,6 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             $('#com-chilipeppr-widget-xyz-jog').popover();
             $('#com-chilipeppr-widget-xyz-ftr .btn').popover();
 
-
             // setup button events
             $('#com-chilipeppr-widget-xyz-ftr .jogx').click("X+", this.jogBtn.bind(this));
             $('#com-chilipeppr-widget-xyz-ftr .jogy').click("Y+", this.jogBtn.bind(this));
