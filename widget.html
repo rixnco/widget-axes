@@ -464,6 +464,11 @@
                     <tr valign="top">
                         <td class="col xcol-xs-2" style="border:0px red solid;" rowspan="2">
                             <div class="btn-group-vertical">
+                                <button class="btn btn-xs btn-default safez" data-toggle="popover" data-placement="top" data-title="Go to safe z position" data-content="G28 G91 Z0" data-html="true"
+                                data-delay="800" data-trigger="hover" data-container="body">Set <span class="com-chilipeppr-widget-xyz-coords">Gxx</span> Zero</button>
+                                <button class="btn btn-xs btn-default safexyz" data-toggle="popover" data-placement="top" data-title="Go to safe/park x/y/z position" data-content="G28 G91 Z0<br>G28 X0 Y0<br/>This moves Z axes to safe position; Then x/y to park position."
+                                data-html="true" data-delay="800" data-trigger="hover" data-container="body">Got to safe XYZ (G28) position</button>
+        
                                 <button class="btn btn-xs btn-default joggotozerow" data-toggle="popover" data-placement="top" data-title="Rapid to Zero Position, all axes, current work coordinate" data-content="G0 X0 Y0 Z0 A0<br/>This moves all axes to zero in current work coordinate system; individual moves available via axis drop down menus above."
                                 data-html="true" data-delay="800" data-trigger="hover" data-container="body">Go To <span class="com-chilipeppr-widget-xyz-coords">Gxx</span> Zero</button>
                                 <button class="btn btn-xs btn-default jogzerooutw " id="jogzerooutw" data-toggle="popover" data-placement="top" data-title="Set Active Coordinate Zero Here" data-content="Sets active work coordinate system zero to current machine position." data-html="true"
