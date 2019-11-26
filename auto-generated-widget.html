@@ -1577,7 +1577,7 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             }
             cmd += "G0 ";
             if (evt.data == "xyz") {
-                cmd += "X0 Y0 Z0";
+                cmd += "X0 Y0";
                 // if a axis showing
                 if (this.isAAxisShowing) {
                     cmd += " A0";
@@ -1595,12 +1595,12 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             console.warn("zeroOutAxis10. evt.data:", evt.data, "evt:", evt, "lastVal:", this.lastVal.mx);
             var cmd = '';
             if (evt.data == "xyz") {
-                cmd += 'G10 L2 P' + (this.lastCoords.coordNum - 53) + ' X' + (this.lastVal.mx) + ' Y' + (this.lastVal.my) + ' Z' + (this.lastVal.mz);
+                cmd += 'G10 L20 P' + (this.lastCoords.coordNum - 53) + ' X' + (this.lastVal.mx) + ' Y' + (this.lastVal.my) + ' Z' + (this.lastVal.mz);
                 if (this.isAAxisShowing) {
                     cmd += ' A' + (this.lastVal.ma);
                 }
             } else {
-                cmd += 'G10 L2 P' + (this.lastCoords.coordNum - 53) + evt.data.substr(-1).toUpperCase() + (this.lastVal[evt.data]);
+                cmd += 'G10 L20 P' + (this.lastCoords.coordNum - 53) + evt.data.substr(-1).toUpperCase() + (this.lastVal[evt.data]);
             }
             cmd += "\n";
             console.log(cmd);
