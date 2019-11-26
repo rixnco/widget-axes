@@ -1566,6 +1566,14 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             this.sendCtr++;
             if (this.sendCtr > 999999) this.sendCtr = 0;
         },
+        gotoG28Position: function(evt) {
+            var cmd="G28 G91 Z0\n"
+            if(evt.data == "xyz") {
+                cmd+= "G28 X0 Y0\n"
+            }
+            console.log(cmd);
+            this.publishSend(cmd);            
+        },
         gotoZeroM: function (evt) {
             this.gotoZero(evt, 'M');
         },
@@ -1772,6 +1780,11 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             $('#com-chilipeppr-widget-xyz-ftr .joghomem').click("xyz", this.homeAxis.bind(this));
             $('#com-chilipeppr-widget-xyz-ftr .joggotozerom').click("xyz", this.gotoZeroM.bind(this));
             $('#com-chilipeppr-widget-xyz-ftr .jogzerooutm').click("xyz", this.zeroOutAxisG28.bind(this));
+
+            //safe position
+            $('#com-chilipeppr-widget-xyz-ftr .safez').click("z", this.gotoG28Position.bind(this));
+            $('#com-chilipeppr-widget-xyz-ftr .safexyz').click("xyz", this.gotoG28Position.bind(this));
+
 
 
             // setup base value increment buttons
@@ -2683,9 +2696,9 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                         <td class="col xcol-xs-2" style="border:0px red solid;" rowspan="2">
                             <div class="btn-group-vertical">
                                 <button class="btn btn-xs btn-default safez" data-toggle="popover" data-placement="top" data-title="Go to safe z position" data-content="G28 G91 Z0" data-html="true"
-                                data-delay="800" data-trigger="hover" data-container="body">Set <span class="com-chilipeppr-widget-xyz-coords">Gxx</span> Zero</button>
+                                data-delay="800" data-trigger="hover" data-container="body">Go to safe Z</button>
                                 <button class="btn btn-xs btn-default safexyz" data-toggle="popover" data-placement="top" data-title="Go to safe/park x/y/z position" data-content="G28 G91 Z0<br>G28 X0 Y0<br/>This moves Z axes to safe position; Then x/y to park position."
-                                data-html="true" data-delay="800" data-trigger="hover" data-container="body">Got to safe XYZ (G28) position</button>
+                                data-html="true" data-delay="800" data-trigger="hover" data-container="body">Got to safe XYZ</button>
         
                                 <button class="btn btn-xs btn-default joggotozerow" data-toggle="popover" data-placement="top" data-title="Rapid to Zero Position, all axes, current work coordinate" data-content="G0 X0 Y0 Z0 A0<br/>This moves all axes to zero in current work coordinate system; individual moves available via axis drop down menus above."
                                 data-html="true" data-delay="800" data-trigger="hover" data-container="body">Go To <span class="com-chilipeppr-widget-xyz-coords">Gxx</span> Zero</button>

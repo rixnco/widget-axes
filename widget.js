@@ -1325,6 +1325,14 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             this.sendCtr++;
             if (this.sendCtr > 999999) this.sendCtr = 0;
         },
+        gotoG28Position: function(evt) {
+            var cmd="G28 G91 Z0\n"
+            if(evt.data == "xyz") {
+                cmd+= "G28 X0 Y0\n"
+            }
+            console.log(cmd);
+            this.publishSend(cmd);            
+        },
         gotoZeroM: function (evt) {
             this.gotoZero(evt, 'M');
         },
@@ -1531,6 +1539,11 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
             $('#com-chilipeppr-widget-xyz-ftr .joghomem').click("xyz", this.homeAxis.bind(this));
             $('#com-chilipeppr-widget-xyz-ftr .joggotozerom').click("xyz", this.gotoZeroM.bind(this));
             $('#com-chilipeppr-widget-xyz-ftr .jogzerooutm').click("xyz", this.zeroOutAxisG28.bind(this));
+
+            //safe position
+            $('#com-chilipeppr-widget-xyz-ftr .safez').click("z", this.gotoG28Position.bind(this));
+            $('#com-chilipeppr-widget-xyz-ftr .safexyz').click("xyz", this.gotoG28Position.bind(this));
+
 
 
             // setup base value increment buttons
