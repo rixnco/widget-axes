@@ -635,78 +635,78 @@ cpdefine("inline:com-chilipeppr-widget-xyz", ["chilipeppr_ready", "jquerycookie"
                 ma: this.axisma
             };
         },
-        updateAxesFromStatus: function (axes) {
-            console.log("updateAxesFromStatus:", axes);
-            if ('x' in axes && axes.x !== null) {
-                this.updateAxis("x", axes.x);
-            }
-            if ('y' in axes && axes.y !== null) {
-                this.updateAxis("y", axes.y);
-            }
-            if ('z' in axes && axes.z !== null) {
-                this.updateAxis("z", axes.z);
-            }
-            if ('a' in axes && axes.a !== null) {
-                this.updateAxis("a", axes.a);
-            }
-            if ('mpo' in axes) {
-                axes = axes.mpo;
-                var scale = 0;
-                if (this.currentUnits == 'mm') scale = 1;
-                if (this.currentUnits == 'inch') scale = 1 / 25.4;
-                if ('x' in axes && axes.x !== null) {
-                    this.updateAxis("mx", this.round(axes.x * scale, 4));
-                }
-                if ('y' in axes && axes.y !== null) {
-                    this.updateAxis("my", this.round(axes.y * scale, 4));
-                }
-                if ('z' in axes && axes.z !== null) {
-                    this.updateAxis("mz", this.round(axes.z * scale, 4));
-                }
-                if ('a' in axes && axes.a !== null) {
-                    this.updateAxis("ma", this.round(axes.a * scale, 4));
-                }
-            }
-        },
-        // updateAxesFromStatus = function(axes) {
+        // updateAxesFromStatus: function (axes) {
         //     console.log("updateAxesFromStatus:", axes);
-
-        //     var coords = {
-        //         x: null,
-        //         y: null,
-        //         z: null
-        //     } //create local object to edit
-
-        //     //first, we may need to convert units to match 3d viewer
-        //     if (axes.unit == "mm" && this.currentUnits === "inch") {
-        //         coords.x = (axes.x / 25.4).toFixed(3);
-        //         coords.y = (axes.y / 25.4).toFixed(3);
-        //         coords.z = (axes.z / 25.4).toFixed(3);
+        //     if ('x' in axes && axes.x !== null) {
+        //         this.updateAxis("x", axes.x);
         //     }
-        //     else if (axes.unit == "inch" && this.currentUnits === "mm") {
-        //         coords.x = (axes.x * 25.4).toFixed(3);
-        //         coords.y = (axes.y * 25.4).toFixed(3);
-        //         coords.z = (axes.z * 25.4).toFixed(3);
+        //     if ('y' in axes && axes.y !== null) {
+        //         this.updateAxis("y", axes.y);
         //     }
-        //     else {
-        //         coords.x = axes.x;
-        //         coords.y = axes.y;
-        //         coords.z = axes.z;
+        //     if ('z' in axes && axes.z !== null) {
+        //         this.updateAxis("z", axes.z);
         //     }
-
-        //     if ('x' in coords && coords.x != null) {
-        //         this.updateAxis("x", coords.x);
+        //     if ('a' in axes && axes.a !== null) {
+        //         this.updateAxis("a", axes.a);
         //     }
-        //     if ('y' in coords && coords.y != null) {
-        //         this.updateAxis("y", coords.y);
-        //     }
-        //     if ('z' in coords && coords.z != null) {
-        //         this.updateAxis("z", coords.z);
-        //     }
-        //     if ('a' in coords && coords.a != null) {
-        //         this.updateAxis("a", coords.a);
+        //     if ('mpo' in axes) {
+        //         axes = axes.mpo;
+        //         var scale = 0;
+        //         if (this.currentUnits == 'mm') scale = 1;
+        //         if (this.currentUnits == 'inch') scale = 1 / 25.4;
+        //         if ('x' in axes && axes.x !== null) {
+        //             this.updateAxis("mx", this.round(axes.x * scale, 4));
+        //         }
+        //         if ('y' in axes && axes.y !== null) {
+        //             this.updateAxis("my", this.round(axes.y * scale, 4));
+        //         }
+        //         if ('z' in axes && axes.z !== null) {
+        //             this.updateAxis("mz", this.round(axes.z * scale, 4));
+        //         }
+        //         if ('a' in axes && axes.a !== null) {
+        //             this.updateAxis("ma", this.round(axes.a * scale, 4));
+        //         }
         //     }
         // },
+        updateAxesFromStatus: function(axes) {
+            console.log("updateAxesFromStatus:", axes);
+
+            var coords = {
+                x: null,
+                y: null,
+                z: null
+            } //create local object to edit
+
+            //first, we may need to convert units to match 3d viewer
+            if (axes.unit == "mm" && this.currentUnits === "inch") {
+                coords.x = (axes.x / 25.4).toFixed(3);
+                coords.y = (axes.y / 25.4).toFixed(3);
+                coords.z = (axes.z / 25.4).toFixed(3);
+            }
+            else if (axes.unit == "inch" && this.currentUnits === "mm") {
+                coords.x = (axes.x * 25.4).toFixed(3);
+                coords.y = (axes.y * 25.4).toFixed(3);
+                coords.z = (axes.z * 25.4).toFixed(3);
+            }
+            else {
+                coords.x = axes.x;
+                coords.y = axes.y;
+                coords.z = axes.z;
+            }
+
+            if ('x' in coords && coords.x != null) {
+                this.updateAxis("x", coords.x);
+            }
+            if ('y' in coords && coords.y != null) {
+                this.updateAxis("y", coords.y);
+            }
+            if ('z' in coords && coords.z != null) {
+                this.updateAxis("z", coords.z);
+            }
+            if ('a' in coords && coords.a != null) {
+                this.updateAxis("a", coords.a);
+            }
+        },
 
         // keep track of lastval so less dom updates to perform
         lastVal: {
